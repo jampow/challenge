@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:jampow/boticario-challenge.git",
   "author": "Gianpaulo M. Soares <jam_pow@hotmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^4.2.5"
+  }
 }
