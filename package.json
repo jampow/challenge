@@ -6,7 +6,8 @@
   "author": "Gianpaulo M. Soares <jam_pow@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd packages/web-app; yarn start"
+    "start": "cd packages/web-app; yarn start",
+    "e2e": "cd packages/e2e-tests; yarn start"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
