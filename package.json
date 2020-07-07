@@ -5,6 +5,9 @@
   "repository": "git@github.com:jampow/boticario-challenge.git",
   "author": "Gianpaulo M. Soares <jam_pow@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "cd packages/web-app; yarn start"
+  },
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
