@@ -1,0 +1,23 @@
+{
+  "name": "back-end",
+  "version": "0.0.0",
+  "description": "Mocked back-end",
+  "author": "Gianpaulo M. Soares <jam_pow@hotmail.com>",
+  "homepage": "https://github.com/jampow/boticario-challenge#readme",
+  "license": "MIT",
+  "main": "lib/back-end.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jampow/boticario-challenge.git"
+  },
+  "scripts": {
+    "reset": "rm db.json; cp db/db.json .",
+    "start": "json-server --watch db.json -p 5000"
+  },
+  "bugs": {
+    "url": "https://github.com/jampow/boticario-challenge/issues"
+  },
+  "dependencies": {
+    "json-server": "^0.16.1"
+  }
+}

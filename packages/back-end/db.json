@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Douglas N. Adams",
+      "CPF": "01234567890",
+      "email": "d.adams@hitchhiker.com",
+      "password": "42"
+    },
+    {
+      "name": "gian",
+      "cpf": "34222687820",
+      "email": "jam_pow@hotmail.com",
+      "password": "oi",
+      "id": 2
+    }
+  ]
+}

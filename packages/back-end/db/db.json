@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Douglas N. Adams",
+      "CPF": "01234567890",
+      "email": "d.adams@hitchhiker.com",
+      "password": "42"
+    }
+  ]
+}
