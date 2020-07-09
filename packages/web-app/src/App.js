@@ -1,8 +1,22 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
+
+import Login from './pages/login'
 
 function App() {
   return (
-    <div>oi</div>
+    <Router>
+      <Switch>
+        <Route path="/">
+          <Login />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
