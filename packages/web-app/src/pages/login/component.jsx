@@ -6,6 +6,7 @@ import {
   Form,
   Row
 } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Login = props => {
   return (
@@ -24,7 +25,7 @@ const Login = props => {
             <Button variant="primary" type="submit" block>
               Entrar
             </Button>{' '}
-            <Button variant="outline-primary" block>
+            <Button as={Link} to="/signup" variant="outline-primary" block>
               Criar conta
             </Button>
           </Form>
