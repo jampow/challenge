@@ -8,8 +8,8 @@
   "scripts": {
     "e2e": "cd packages/e2e-tests; yarn start",
     "postinstall": "lerna bootstrap",
-    "start": "cd packages/web-app; yarn start",
-    "dev": "lerna run --scope web-app --scope back-end start --stream"
+    "start:front": "cd packages/web-app; yarn start",
+    "start:back": "cd packages/back-end; yarn start"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.0.1",
