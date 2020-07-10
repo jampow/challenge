@@ -5,10 +5,13 @@
   "author": "Gianpaulo M. Soares <jam_pow@hotmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "cpf-cnpj-validator": "^1.0.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",
