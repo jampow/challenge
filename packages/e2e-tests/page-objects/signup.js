@@ -1,3 +1,5 @@
+const faker = require('faker')
+
 module.exports = {
   url: 'http://localhost:3000/signup',
   elements: {
@@ -25,5 +27,17 @@ module.exports = {
       selector: '/html/body/div[1]/div/div/div/form/div[3]/div[2]/div/a',
       locateStrategy: 'xpath'
     }
-  }
+  },
+  commands: [{
+    submit: function() {
+      return this.click('@btnSubmit')
+    },
+    fillFormWithRandomData: function() {
+      return this
+        .setValue('@inputName', faker.name.findName())
+        .setValue('@inputCpf', '01234567890')
+        .setValue('@inputEmail', faker.internet.email())
+        .setValue('@inputPassword', faker.internet.password())
+    }
+  }]
 }
