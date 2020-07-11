@@ -53,6 +53,7 @@ export default () => {
                 <Form.Label>Nome completo</Form.Label>
                 <Form.Control
                   type="text"
+                  name="name"
                   onChange={handleNameChange}
                   isInvalid={errors && errors.name}
                 />
@@ -65,6 +66,7 @@ export default () => {
                 <Form.Label>CPF</Form.Label>
                 <Form.Control
                   type="text"
+                  name="cpf"
                   onChange={handleCpfChange}
                   isInvalid={errors && errors.cpf}
                 />
@@ -80,6 +82,7 @@ export default () => {
                 <Form.Label>E-mail</Form.Label>
                 <Form.Control
                   type="email"
+                  name="email"
                   onChange={handleEmailChange}
                   isInvalid={errors && errors.email}
                 />
@@ -92,6 +95,7 @@ export default () => {
                 <Form.Label>Senha</Form.Label>
                 <Form.Control
                   type="password"
+                  name="password"
                   onChange={handlePasswordChange}
                   isInvalid={errors && errors.password}
                 />
