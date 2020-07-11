@@ -1,6 +1,6 @@
-import axios from 'axios'
 import _Joi from '@hapi/joi'
 import { validator } from 'cpf-cnpj-validator'
+import axios from './_config'
 
 const Joi = _Joi.extend(validator)
 
@@ -18,6 +18,5 @@ export const createUser = async (user) => {
     return { error }
   }
 
-  const resp = await axios.post('http://localhost:5000/users', value)
-  return resp
+  return await axios.post('/users', value)
 }
