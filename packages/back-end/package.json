@@ -12,12 +12,15 @@
   },
   "scripts": {
     "reset": "rm db.json; cp db/db.json .",
-    "start": "json-server --watch -p 5000 db.json"
+    "start": "yarn reset; nodemon src"
   },
   "bugs": {
     "url": "https://github.com/jampow/boticario-challenge/issues"
   },
   "dependencies": {
     "json-server": "^0.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
