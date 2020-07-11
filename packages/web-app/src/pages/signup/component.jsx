@@ -23,18 +23,13 @@ export default () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     const resp = await createUser({
       name, cpf, email, password
     })
 
-    if (resp.error && resp.error.details.length > 0) {
-      const simpleErrors = resp.error.details.reduce((acc, err) => {
-        return {
-          ...acc,
-          [err.context.key]: err.message
-        }
-      }, {})
-      setErrors(simpleErrors)
+    if (resp.error) {
+      setErrors(resp.error)
     } else {
       setErrors(null)
       // TODO: levar para a dashboard como logado

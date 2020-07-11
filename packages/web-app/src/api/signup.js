@@ -1,6 +1,7 @@
 import _Joi from '@hapi/joi'
 import { validator } from 'cpf-cnpj-validator'
 import axios from './_config'
+import { simplifyErrorObj } from './common'
 
 const Joi = _Joi.extend(validator)
 
@@ -15,7 +16,7 @@ export const createUser = async (user) => {
   const { error, value } = userSchema.validate(user, { abortEarly: false })
 
   if (error) {
-    return { error }
+    return { error: simplifyErrorObj(error) }
   }
 
   return await axios.post('/users', value)
