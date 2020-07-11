@@ -24,7 +24,7 @@ const Login = props => {
             </Form.Group>
             <Button variant="primary" type="submit" block>
               Entrar
-            </Button>{' '}
+            </Button>
             <Button as={Link} to="/signup" variant="outline-primary" block>
               Criar conta
             </Button>
