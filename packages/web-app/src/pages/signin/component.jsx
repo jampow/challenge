@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import {
+  Alert,
   Col,
   Container,
   Button,
   Form,
   Row
 } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import {
+  Link,
+  useHistory
+} from 'react-router-dom'
 import { doLogin } from '../../api/signin'
 
 const Login = props => {
+  const history = useHistory()
+  const [genericError, setGenericError] = useState(false)
   const [errors, setErrors] = useState(null)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,16 +30,33 @@ const Login = props => {
       email, password
     })
 
-    if(resp.error) {
-      setErrors(resp.error)
-    } else {
-      console.log(resp)
-      setErrors(null)
+    setErrors(resp.errors || null)
+    if(errors) return
+
+    if (resp.status !== 200) {
+      setGenericError(true)
+      return
     }
+
+    history.push('/dashboard')
+  }
+
+  const GenericError = ({ show }) => {
+    if (!show) return ''
+    return (
+      <Row>
+        <Col>
+          <Alert type="Danger">
+            Não foi possível entrar. E-mail ou senha inválidos.
+          </Alert>
+        </Col>
+      </Row>
+    )
   }
 
   return(
     <Container>
+      <GenericError show={genericError} />
       <Row className="justify-content-md-center">
         <Col xs lg="4">
           <h1>Login</h1>
@@ -41,6 +64,7 @@ const Login = props => {
             <Form.Group noValidate onSubmit={handleSubmit}>
               <Form.Control
                 name="email"
+                type="email"
                 placeholder="email"
                 onChange={handleEmailChange}
                 isInvalid={errors && errors.email}
@@ -53,6 +77,7 @@ const Login = props => {
             <Form.Group controlId="formBasicPassword">
               <Form.Control
                 name="password"
+                type="password"
                 placeholder="Password"
                 onChange={handlePasswordChange}
                 isInvalid={errors && errors.password}

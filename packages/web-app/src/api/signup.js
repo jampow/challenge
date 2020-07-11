@@ -19,5 +19,5 @@ export const createUser = async (user) => {
     return { error: simplifyErrorObj(error) }
   }
 
-  return await axios.post('/users', value)
+  return await axios().post('/users', value)
 }
