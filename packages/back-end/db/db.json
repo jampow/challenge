@@ -7,5 +7,67 @@
       "email": "d.adams@hitchhiker.com",
       "password": "42"
     }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Malbeck Black Desodorante Colònia 100ml",
+      "code": "74723",
+      "price": 139.9
+    },
+    {
+      "id": 2,
+      "name": "Uomini Desodorante Colônia 100ml",
+      "code": "22636",
+      "price": 103.9
+    },
+    {
+      "id": 3,
+      "name": "Lily Absolu Eau de Parfum 75ml",
+      "code": "77509",
+      "price": 192.9
+    },
+    {
+      "id": 4,
+      "name": "Linda Desodorante Colônia 100ml",
+      "code": "22516",
+      "price": 103.9
+    },
+    {
+      "id": 5,
+      "name": "Egeo Spicy Vibe Antitranspirante Desodorante Aerosol 75g",
+      "code": "80503",
+      "price": 25.9
+    },
+    {
+      "id": 6,
+      "name": "Egeo Vanilla Vibe Sorbet Desodorante Hidratante Corporal 250g",
+      "code": "80507",
+      "price": 49.9
+    },
+    {
+      "id": 7,
+      "name": "Nécessaire Holográfico Rosé M",
+      "code": "43913",
+      "price": 39.9
+    },
+    {
+      "id": 8,
+      "name": "Nécessaire Holográfico Rosé P",
+      "code": "43942",
+      "price": 23.9
+    },
+    {
+      "id": 9,
+      "name": "Make B Batom Cremoso Lily Absolu 3,6g",
+      "code": "77412",
+      "price": 49.9
+    },
+    {
+      "id": 10,
+      "name": "Creme Acetinado Hidratante para Mãos 50g",
+      "code": "77710",
+      "price": 39.9
+    }
   ]
 }
