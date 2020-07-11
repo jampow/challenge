@@ -95,7 +95,7 @@ export default () => {
                   isInvalid={errors && errors.password}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {errors && errors.email}
+                  {errors && errors.password}
                 </Form.Control.Feedback>
               </Form.Group>
 
