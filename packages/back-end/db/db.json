@@ -8,6 +8,33 @@
       "password": "42"
     }
   ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "name": "Malbeck Black Desodorante Colònia 100ml",
+          "code": "74723",
+          "quantity": 1,
+          "price": 139.9,
+          "total": 139.9
+        },
+        {
+          "id": 2,
+          "name": "Uomini Desodorante Colônia 100ml",
+          "code": "22636",
+          "quantity": 1,
+          "price": 103.9,
+          "total": 103.9
+        }
+      ],
+      "total": 243.8,
+      "creditUsed": 0,
+      "creditEarned": 0
+    }
+  ],
   "products": [
     {
       "id": 1,
