@@ -42,6 +42,13 @@ export default () => {
     setEditingItem({})
   }
 
+  const handleItemDeletion = id => {
+    setCartItems(
+      cartItems.filter(item => item.id !== id)
+    )
+    setEditingItem({})
+  }
+
   const showModal = () => Object.keys(editingItem).length > 0
 
   const handleItemClick = item => () => {
@@ -92,7 +99,12 @@ export default () => {
           </Col>
         </Row>
       </Container>
-      <EditModal show={showModal()} item={editingItem} onSave={handleItemEdition} />
+      <EditModal
+        show={showModal()}
+        item={editingItem}
+        onSave={handleItemEdition}
+        onDelete={handleItemDeletion}
+      />
     </>
   )
 }

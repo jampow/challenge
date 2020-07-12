@@ -8,7 +8,12 @@ import {
 } from 'react-bootstrap'
 import currency from '../../common/currency'
 
-export default ({ item, show, onSave = () => {} }) => {
+export default ({
+  item,
+  onDelete = () => {},
+  onSave = () => {},
+  show
+}) => {
   const { name, price } = item
   const [ quantity, setQuantity ] = useState(item.quantity)
   const [ total, setTotal ] = useState(item.total)
@@ -23,6 +28,8 @@ export default ({ item, show, onSave = () => {} }) => {
 
     onSave(cartItem)
   }
+
+  const handleDelete = () => onDelete(item.id)
 
   useEffect(() => setTotal(quantity * price), [quantity])
 
@@ -67,7 +74,7 @@ export default ({ item, show, onSave = () => {} }) => {
       </Form>
 
       <Modal.Footer>
-        <Button variant="danger">Remover</Button>
+        <Button variant="danger" onClick={handleDelete}>Remover</Button>
         <Button variant="primary" onClick={handleSave}>Salvar</Button>
       </Modal.Footer>
     </Modal>
