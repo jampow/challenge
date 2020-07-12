@@ -1,33 +1,15 @@
 import React, { useState } from 'react'
 import {
-  Button,
   Container,
   Col,
   Form,
   Row,
   Table
 } from 'react-bootstrap'
-import { AsyncTypeahead } from 'react-bootstrap-typeahead'
-import { debounce } from 'throttle-debounce'
-import { searchProduct } from '../../api/order'
-
-const DEBOUNCE_TIMEOUT = 500
+import SearchBar from './SearchBar'
 
 export default () => {
   const [ cartItems, setCartItems ] = useState([])
-  const [ options, setOptions ] = useState([])
-  const [ loading, setLoading ] = useState(false)
-
-  const debouncedSeach = debounce(DEBOUNCE_TIMEOUT, async (query) => {
-    const { data } = await searchProduct(query)
-    setOptions(data)
-    setLoading(false)
-  })
-
-  const handleQuerySearch = value => {
-    setLoading(true)
-    debouncedSeach(value)
-  }
 
   const handleSelectItem = ([ option ]) => {
     if (!option) return 
@@ -42,8 +24,6 @@ export default () => {
     setCartItems(newCart)
   }
 
-  const labelKeyFormater = ({ code, name, price}) => `${code} - ${name} - ${price}`
-
   const currencyFormat = n => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(n)
 
   const cartTotal = () => cartItems.reduce((acc, item) => acc + item.total, 0)
@@ -56,15 +36,7 @@ export default () => {
           <Form>
             <Form.Group as={Col}>
               <Form.Label>Busque o produto</Form.Label>
-              <AsyncTypeahead
-                id="searchQueryInput"
-                isLoading={loading}
-                minLength={2}
-                labelKey={labelKeyFormater}
-                onSearch={handleQuerySearch}
-                options={options}
-                onChange={handleSelectItem}
-              />
+              <SearchBar onChange={handleSelectItem} />
             </Form.Group>
             <Table responsive>
               <thead className="text-center">
