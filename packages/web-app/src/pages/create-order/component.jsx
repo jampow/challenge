@@ -46,6 +46,8 @@ export default () => {
 
   const currencyFormat = n => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(n)
 
+  const cartTotal = () => cartItems.reduce((acc, item) => acc + item.total, 0)
+
   return (
     <Container>
       <Row className="justify-content-md-center">
@@ -89,7 +91,7 @@ export default () => {
               <tfoot>
                 <tr className="text-right">
                   <th colspan="3">Total:</th>
-                  <th>{currencyFormat(234324)}</th>
+                  <th>{currencyFormat(cartTotal())}</th>
                 </tr>
               </tfoot>
             </Table>
