@@ -1,3 +1,5 @@
+import jwtDecode from 'jwt-decode'
+
 export const simplifyErrorObj = joiErrorObj => {
   return joiErrorObj.details.reduce((acc, err) => ({
     ...acc,
@@ -6,7 +8,10 @@ export const simplifyErrorObj = joiErrorObj => {
 }
 
 export const getToken = () => lsGet('token')
-export const setToken = (token) => lsSet('token', token)
+export const setToken = (token) => {
+  lsSet('token', token)
+  lsSet('user', jwtDecode(token))
+}
 
 const lsGet = (key) => {
   let value
