@@ -8,7 +8,7 @@ const userSchema = Joi.object({
 })
 
 const storeToken = resp => {
-  const token = resp && resp.data && resp.data.token 
+  const token = resp && resp.data && resp.data.accessToken 
   setToken(token)
   return resp
 }

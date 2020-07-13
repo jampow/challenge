@@ -2,10 +2,10 @@
   "users": [
     {
       "id": 1,
-      "name": "Douglas N. Adams",
-      "CPF": "01234567890",
-      "email": "d.adams@hitchhiker.com",
-      "password": "42"
+      "email": "test@test.com",
+      "password": "$2a$10$tfvX7l4y9wIaWBnjiv1Kw.mafMCY2LvyZWik9M6cc974e6L.JLcuq",
+      "name": "Usuário Teste",
+      "cpf": "01234567890"
     }
   ],
   "orders": [
