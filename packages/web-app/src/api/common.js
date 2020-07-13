@@ -12,7 +12,8 @@ const lsGet = (key) => {
   let value
 
   try {
-    value = window.localStorage.getItem(key)
+    const storagedValue = window.localStorage.getItem(key)
+    value = JSON.parse(storagedValue)
   } catch(err) {
     console.error('Local Storage is not accesible', err)
     return null
@@ -24,7 +25,7 @@ const lsGet = (key) => {
 const lsSet = (key, value) => {
 
   try {
-    window.localStorage.setItem(key, value)
+    window.localStorage.setItem(key, JSON.stringify(value))
   } catch(err) {
     console.error('Local Storage is not accesible', err)
     return null
