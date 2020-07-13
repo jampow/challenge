@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AsyncTypeahead } from 'react-bootstrap-typeahead'
 import { debounce } from 'throttle-debounce'
-import { searchProduct } from '../../api/order'
+import { searchProduct } from '../../api/product'
 
 const DEBOUNCE_TIMEOUT = 500
 
