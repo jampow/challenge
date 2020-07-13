@@ -12,7 +12,7 @@
   },
   "scripts": {
     "reset": "rm db.json; cp db/db.json .",
-    "start": "yarn reset; nodemon src"
+    "start": "yarn reset; nodemon src --ignore db.json"
   },
   "bugs": {
     "url": "https://github.com/jampow/boticario-challenge/issues"
