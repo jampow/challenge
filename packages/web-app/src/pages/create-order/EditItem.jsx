@@ -40,7 +40,7 @@ export default ({
 
   const closeConfirmation = () => setShowConfirm(false)
 
-  useEffect(() => setTotal(quantity * price), [quantity])
+  useEffect(() => setTotal(quantity * price), [quantity, price])
 
   return (
     <>

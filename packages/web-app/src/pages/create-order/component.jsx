@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  Alert,
   Button,
   Container,
   Col,
@@ -17,6 +18,7 @@ export default () => {
   const history = useHistory()
   const [ cartItems, setCartItems ] = useState([])
   const [ editingItem, setEditingItem ] = useState({})
+  const [ error, setError ] = useState('')
 
   const handleSelectItem = ([ option ]) => {
     if (!option) return 
@@ -69,7 +71,15 @@ export default () => {
 
     const resp = await createOrder(order)
 
-    history.push('/dashboard')
+    if (resp.status === 201) {
+      history.push({
+        pathname: '/dashboard',
+        state: { success: true }
+      })
+    } else {
+      console.log('erro')
+      setError('Não foi possível efetuar o pedido')
+    }
   }
 
   return (
@@ -78,6 +88,7 @@ export default () => {
         <Row className="justify-content-md-center">
           <Col>
             <h1>Novo pedido</h1>
+            {error && (<Alert variant="danger">{error}</Alert>)}
             <Form>
               <Form.Group as={Col}>
                 <Form.Label>Busque o produto</Form.Label>
