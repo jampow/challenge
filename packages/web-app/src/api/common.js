@@ -7,10 +7,28 @@ export const simplifyErrorObj = joiErrorObj => {
   }), {})
 }
 
+
+export const getAuth = () => lsGet('auth')
 export const getToken = () => lsGet('token')
 export const setToken = (token) => {
   lsSet('token', token)
-  lsSet('user', jwtDecode(token))
+  lsSet('auth', jwtDecode(token))
+}
+
+export const delToken = () => {
+  lsDel('token')
+  lsDel('auth')
+}
+
+const lsDel = (key) => {
+  try {
+    window.localStorage.removeItem(key)
+  } catch(err) {
+    console.error('Local Storage is not accesible', err)
+    return null
+  }
+
+  return true
 }
 
 const lsGet = (key) => {

@@ -4,6 +4,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import { getToken } from '../api/common'
+import AuthFrame from '../common/components/auth-frame'
 
 const isAuthenticated = () => !!getToken()
 
@@ -12,7 +13,7 @@ const PrivateRoute = ({ children, ...rest }) => (
     {...rest}
     render={({ location }) => (
       isAuthenticated()
-      ? children
+      ? (<AuthFrame>{children}</AuthFrame>)
       : (<Redirect to="/" />)
     )}
   />
