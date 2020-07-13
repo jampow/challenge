@@ -13,6 +13,14 @@ const rules = auth.rewriter({
 server.use(middlewares)
 server.use(jsonServer.bodyParser)
 
+server.use((req, res, next) => {
+  if (req.method === 'POST') {
+    req.body.createdAt = Date.now()
+  }
+
+  next()
+})
+
 //server.post('/login', (req, res) => {
   //const { email, password } = req.body
   //const data = email + password
