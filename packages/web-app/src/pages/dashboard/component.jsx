@@ -10,7 +10,7 @@ import {
   Spinner
 } from 'react-bootstrap'
 import { getOrders } from '../../api/order'
-import currency from '../../common/currency'
+import { date, currency } from '../../common/helpers/formaters'
 
 export default () => {
   const [ orders, setOrders ] = useState([])
@@ -50,20 +50,20 @@ export default () => {
               : orders.map(order => (
                 <ListGroup.Item key={order.id}>
                   <Row>
-                    <Col xs="6" md="3" lg="2"><strong>Pedido Nº:</strong></Col>
-                    <Col xs="6" md="3" lg="2">{order.id}</Col>
+                    <Col xs="6" md="3" lg="1"><strong>Pedido:</strong></Col>
+                    <Col xs="6" md="3" lg="3">{order.id}</Col>
 
-                    <Col xs="6" md="3" lg="2"><strong>Data:</strong></Col>
-                    <Col xs="6" md="3" lg="2">{order.createdAt}</Col>
+                    <Col xs="6" md="3" lg="1"><strong>Data:</strong></Col>
+                    <Col xs="6" md="3" lg="3">{date(order.createdAt)}</Col>
 
-                    <Col xs="6" md="3" lg="2"><strong>Valor:</strong></Col>
-                    <Col xs="6" md="3" lg="2">{currency(order.total)}</Col>
+                    <Col xs="6" md="3" lg="1"><strong>Valor:</strong></Col>
+                    <Col xs="6" md="3" lg="3">{currency(order.total)}</Col>
 
-                    <Col xs="6" md="3" lg="2"><strong>Cachback:</strong></Col>
-                    <Col xs="6" md="3" lg="2">({(order.cashbackPerc * 100) || 0}%) {currency(order.cashbackValue)}</Col>
+                    <Col xs="6" md="3" lg="1"><strong>Cachback:</strong></Col>
+                    <Col xs="6" md="3" lg="3">({(order.cashbackPerc * 100) || 0}%) {currency(order.cashbackValue)}</Col>
 
-                    <Col xs="6" md="3" lg="2"><strong>Status:</strong></Col>
-                    <Col xs="6" md="3" lg="2">{order.status}</Col>
+                    <Col xs="6" md="3" lg="1"><strong>Status:</strong></Col>
+                    <Col xs="6" md="3" lg="3">{order.status}</Col>
                   </Row>
                 </ListGroup.Item>
               ))
