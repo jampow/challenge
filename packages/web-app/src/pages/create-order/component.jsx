@@ -11,7 +11,7 @@ import {
 import { useHistory } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import EditModal from './EditItem'
-import currency from '../../common/currency'
+import { currency } from '../../common/helpers/formaters'
 import { createOrder } from '../../api/order'
 
 export default () => {

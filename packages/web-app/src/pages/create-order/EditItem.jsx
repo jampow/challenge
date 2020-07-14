@@ -6,7 +6,7 @@ import {
   Modal,
   Row
 } from 'react-bootstrap'
-import currency from '../../common/currency'
+import { currency } from '../../common/helpers/formaters'
 
 export default ({
   item,
