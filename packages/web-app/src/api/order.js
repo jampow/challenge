@@ -5,9 +5,16 @@ import { simplifyErrorObj } from './common'
 
 const PRIVATE = true
 
+export const STATUS = {
+  WAITING: 'waiting',
+  APPROVED: 'approved',
+  REPROVED: 'reproved'
+}
+
 const orderSchema = Joi.object({
   userId: Joi.number().integer().positive().required(),
   total: Joi.number().positive().precision(2).required(),
+  status: Joi.string().valid(...Object.values(STATUS)),
   //creditUsed: Joi.number.positive().precision(2).required(),
   //creditEarned: Joi.number.positive().precision(2).required(),
   items: Joi.array().min(1).items(
@@ -31,7 +38,13 @@ export const getOrders = async () => {
 export const createOrder = async (_order) => {
   const userId = getAuth().sub
 
-  const order = { ..._order, userId }
+  const order = {
+    ..._order,
+    // OBS: Não colocaria esses dados, o ideal seria colocar no backend
+    userId,
+    status: STATUS.WAITING
+  }
+
   const { error, value } = orderSchema.validate(order, { abortEarly: false })
 
   if (error) {

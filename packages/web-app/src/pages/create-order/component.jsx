@@ -77,7 +77,6 @@ export default () => {
         state: { success: true }
       })
     } else {
-      console.log('erro')
       setError('Não foi possível efetuar o pedido')
     }
   }

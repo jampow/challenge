@@ -32,7 +32,8 @@
       ],
       "total": 243.8,
       "creditUsed": 0,
-      "creditEarned": 0
+      "creditEarned": 0,
+      "status": "approved"
     }
   ],
   "products": [
