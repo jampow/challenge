@@ -42,7 +42,7 @@ export default () => {
 
           <ListGroup>
             {loading 
-              ? <Spinner animation="grow" /> 
+              ? <Spinner animation="border" variant="primary" />
               : orders.map(order => (
                 <ListGroup.Item key={order.id}>
                   <Row>
