@@ -40,33 +40,38 @@ export default () => {
             </Alert>
           }
 
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <ListGroup>
             {loading 
               ? <Spinner animation="border" variant="primary" />
               : orders.map(order => (
                 <ListGroup.Item key={order.id}>
                   <Row>
-                    <Col xs={12}>
-                      <strong>Pedido Nº:</strong> {order.id}
-                    </Col>
-                    <Col xs={12}>
-                      <strong>Data:</strong> {order.createdAt}
-                    </Col>
-                    <Col xs={12}>
-                      <strong>Valor:</strong> {currency(order.total)}
-                    </Col>
-                    <Col xs={12}>
-                      <strong>Cachback:</strong> ({order.cbPercentage || 0}%) {currency(order.cbTotal)}
-                    </Col>
-                    <Col xs={12}>
-                      <strong>Status:</strong> {order.status}
-                    </Col>
+                    <Col xs="6" md="3" lg="2"><strong>Pedido Nº:</strong></Col>
+                    <Col xs="6" md="3" lg="2">{order.id}</Col>
+
+                    <Col xs="6" md="3" lg="2"><strong>Data:</strong></Col>
+                    <Col xs="6" md="3" lg="2">{order.createdAt}</Col>
+
+                    <Col xs="6" md="3" lg="2"><strong>Valor:</strong></Col>
+                    <Col xs="6" md="3" lg="2">{currency(order.total)}</Col>
+
+                    <Col xs="6" md="3" lg="2"><strong>Cachback:</strong></Col>
+                    <Col xs="6" md="3" lg="2">({order.cbPercentage || 0}%) {currency(order.cbTotal)}</Col>
+
+                    <Col xs="6" md="3" lg="2"><strong>Status:</strong></Col>
+                    <Col xs="6" md="3" lg="2">{order.status}</Col>
                   </Row>
                 </ListGroup.Item>
               ))
             }
           </ListGroup>
+        <Col>
 
+        </Col>
           <Button as={Link} to="/create-order">
             Novo pedido
           </Button>
