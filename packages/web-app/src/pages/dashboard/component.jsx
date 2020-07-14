@@ -60,7 +60,7 @@ export default () => {
                     <Col xs="6" md="3" lg="2">{currency(order.total)}</Col>
 
                     <Col xs="6" md="3" lg="2"><strong>Cachback:</strong></Col>
-                    <Col xs="6" md="3" lg="2">({order.cbPercentage || 0}%) {currency(order.cbTotal)}</Col>
+                    <Col xs="6" md="3" lg="2">({(order.cashbackPerc * 100) || 0}%) {currency(order.cashbackValue)}</Col>
 
                     <Col xs="6" md="3" lg="2"><strong>Status:</strong></Col>
                     <Col xs="6" md="3" lg="2">{order.status}</Col>

@@ -2,6 +2,7 @@ import Joi from '@hapi/joi'
 import axios from './_config'
 import { getAuth } from './common'
 import { simplifyErrorObj } from './common'
+import { calculateCashback } from './cashback'
 
 const PRIVATE = true
 
@@ -15,8 +16,9 @@ const orderSchema = Joi.object({
   userId: Joi.number().integer().positive().required(),
   total: Joi.number().positive().precision(2).required(),
   status: Joi.string().valid(...Object.values(STATUS)),
-  //creditUsed: Joi.number.positive().precision(2).required(),
-  //creditEarned: Joi.number.positive().precision(2).required(),
+  //creditUsed: Joi.number().positive().precision(2).required(),
+  cashbackPerc: Joi.number().positive().precision(2).required(),
+  cashbackValue: Joi.number().positive().precision(2).required(),
   items: Joi.array().min(1).items(
     Joi.object({
       id: Joi.number().required(),
@@ -38,10 +40,14 @@ export const getOrders = async () => {
 export const createOrder = async (_order) => {
   const userId = getAuth().sub
 
+  const cb = await calculateCashback(_order.total)
+
   const order = {
     ..._order,
     // OBS: Não colocaria esses dados, o ideal seria colocar no backend
     userId,
+    cashbackValue: cb.value,
+    cashbackPerc: cb.perc,
     status: STATUS.WAITING
   }
 
