@@ -9,18 +9,28 @@ import {
   Row,
   Spinner
 } from 'react-bootstrap'
-import { getOrders } from '../../api/order'
+import { getUserAndOrders } from '../../api/user'
 import { date, currency } from '../../common/helpers/formaters'
+import { STATUS } from '../../api/order'
+
+const sumCashback = orders => orders
+  .filter(order => order.status === STATUS.APPROVED)
+  .reduce((total, order) => total + order.total, 0)
 
 export default () => {
   const [ orders, setOrders ] = useState([])
+  const [ name, setName ] = useState('')
   const [ loading, setLoading ] = useState(true)
+  const [ cashback, setCashback ] = useState(0)
   const { state } = useLocation()
 
   useEffect(() => {
-    getOrders()
+    getUserAndOrders()
       .then(({ data }) => {
-        setOrders(data)
+        const { name, orders } = data
+        setName(name)
+        setOrders(orders)
+        setCashback(sumCashback(orders))
         setLoading(false)
       })
 
@@ -45,6 +55,15 @@ export default () => {
       <Row>
         <Col>
           <ListGroup>
+            <ListGroup.Item>
+              Olá {name}, você tem {currency(cashback)} em crédito acumulado
+            </ListGroup.Item>
+          </ListGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <ListGroup className="mt-3">
             {loading 
               ? <Spinner animation="border" variant="primary" />
               : orders.map(order => (
@@ -69,9 +88,11 @@ export default () => {
               ))
             }
           </ListGroup>
-        <Col>
-
         </Col>
+      </Row>
+
+      <Row className="mt-3">
+        <Col className="text-right">
           <Button as={Link} to="/create-order">
             Novo pedido
           </Button>
