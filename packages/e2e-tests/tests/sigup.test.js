@@ -1,5 +1,6 @@
 
 module.exports = {
+  '@tags': ['signup'],
   'Signup success': browser => {
     const signup = browser.page.signup()
 
