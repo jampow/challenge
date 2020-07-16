@@ -15,11 +15,12 @@ export const STATUS = {
 
 const orderSchema = Joi.object({
   userId: Joi.number().integer().positive().required(),
-  total: Joi.number().positive().precision(2).required(),
+  subtotal: Joi.number().min(0).precision(2).required(),
+  total: Joi.number().min(0).precision(2).required(),
   status: Joi.string().valid(...Object.values(STATUS)),
-  //creditUsed: Joi.number().positive().precision(2).required(),
+  creditUsed: Joi.number().min(0).precision(2).required(),
   cashbackPerc: Joi.number().positive().precision(2).required(),
-  cashbackValue: Joi.number().positive().precision(2).required(),
+  creditEarned: Joi.number().min(0).precision(2).required(),
   items: Joi.array().min(1).items(
     Joi.object({
       id: Joi.number().required(),
@@ -46,12 +47,13 @@ export const createOrder = async (_order) => {
   const cb = await calculateCashback(cbUsage.total)
 
   const order = {
-    ..._order,
+    items: _order.items,
     // OBS: Não colocaria esses dados, o ideal seria colocar no backend
     userId,
+    creditUsed: _order.cashback,
     subtotal: _order.total,
     total: cbUsage.total,
-    cashbackValue: cb.value,
+    creditEarned: cb.value,
     cashbackPerc: cb.perc,
     status: STATUS.WAITING
   }

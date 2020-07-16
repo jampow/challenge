@@ -41,7 +41,7 @@ export default () => {
   }
 
   useEffect(() => {
-    setCashback(location.state && location.state.cashback)
+    setCashback(location.state && location.state.creditEarned)
   }, [location.state])
 
   useEffect(() => {

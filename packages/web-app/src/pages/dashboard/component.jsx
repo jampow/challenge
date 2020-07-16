@@ -17,7 +17,7 @@ export default () => {
   const [ orders, setOrders ] = useState([])
   const [ name, setName ] = useState('')
   const [ loading, setLoading ] = useState(true)
-  const [ cashback, setCashback ] = useState(0)
+  const [ credit, setCredit ] = useState(0)
   const { state } = useLocation()
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default () => {
         const { name, orders } = data
         setName(name)
         setOrders(orders)
-        setCashback(sumCashback(orders))
+        setCredit(sumCashback(orders))
         setLoading(false)
       })
 
@@ -52,7 +52,7 @@ export default () => {
         <Col>
           <ListGroup>
             <ListGroup.Item>
-              Olá {name}, você tem {currency(cashback)} em crédito acumulado
+              Olá {name}, você tem {currency(credit)} em crédito acumulado
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -75,7 +75,7 @@ export default () => {
                     <Col xs="6" md="3" lg="3">{currency(order.total)}</Col>
 
                     <Col xs="6" md="3" lg="1"><strong>Cachback:</strong></Col>
-                    <Col xs="6" md="3" lg="3">({(order.cashbackPerc * 100) || 0}%) {currency(order.cashbackValue)}</Col>
+                    <Col xs="6" md="3" lg="3">({(order.cashbackPerc * 100) || 0}%) {currency(order.creditEarned)}</Col>
 
                     <Col xs="6" md="3" lg="1"><strong>Status:</strong></Col>
                     <Col xs="6" md="3" lg="3">{order.status}</Col>
@@ -89,7 +89,7 @@ export default () => {
 
       <Row className="mt-3">
         <Col className="text-right">
-          <Button as={Link} to={{ pathname: '/create-order', state: { cashback }}}>
+    <Button as={Link} to={{ pathname: '/create-order', state: { creditEarned: credit }}}>
             Novo pedido
           </Button>
         </Col>

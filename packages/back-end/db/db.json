@@ -32,8 +32,9 @@
       ],
       "total": 243.8,
       "creditUsed": 0,
-      "creditEarned": 0,
+      "creditEarned": 24.38,
       "createdAt": 1594765670775,
+      "cashbackPerc": 0.1,
       "status": "approved"
     }
   ],
