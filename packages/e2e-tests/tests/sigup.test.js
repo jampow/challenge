@@ -8,6 +8,7 @@ module.exports = {
       .submit()
       .end()
   },
+
   'Signup invalid cpf': browser => {
     const signup = browser.page.signup()
 
@@ -17,6 +18,7 @@ module.exports = {
       .submit()
       .expect.element('@inputCpfError').text.to.equal('CPF inválido')
   },
+
   'Signup test required fields': browser => {
     const signup = browser.page.signup()
 
@@ -28,6 +30,7 @@ module.exports = {
     signup.expect.element('@inputEmailError').text.to.equal('"email" is not allowed to be empty')
     signup.expect.element('@inputPasswordError').text.to.equal('"password" is not allowed to be empty')
   },
+
   'Signup invalid email': browser => {
     const signup = browser.page.signup()
 
