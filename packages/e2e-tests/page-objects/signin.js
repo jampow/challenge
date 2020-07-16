@@ -13,5 +13,13 @@ module.exports = {
     btnCreateAccount: {
       selector: 'a[href="/signup"]'
     }
-  }
+  },
+  commands: [{
+    loginAsTestUser: function() {
+      return this
+        .setValue('@inputEmail', 'test@test.com')
+        .setValue('@inputPassword', 'test123')
+        .click('@btnSubmit')
+    }
+  }]
 }
