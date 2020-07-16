@@ -13,6 +13,7 @@ module.exports = {
 
   test_settings : {
     default : {
+      launch_url: 'http://localhost:3000',
       desiredCapabilities: {
         browserName: 'chrome'
       }
