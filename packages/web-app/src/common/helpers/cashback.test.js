@@ -4,18 +4,18 @@ import {
 } from './cashback'
 
 const orders = [
-  { status: 'approved', total: 10 },
-  { status: 'reproved', total: 10 },
-  { status: 'waiting', total: 10 },
-  { status: 'approved', total: 10 },
-  { status: 'reproved', total: 10 },
-  { status: 'waiting', total: 10 }
+  { status: 'approved', creditEarned: 10, creditUsed: 5 },
+  { status: 'reproved', creditEarned: 10, creditUsed: 5 },
+  { status: 'waiting', creditEarned: 10, creditUsed: 5 },
+  { status: 'approved', creditEarned: 10, creditUsed: 0 },
+  { status: 'reproved', creditEarned: 10, creditUsed: 0 },
+  { status: 'waiting', creditEarned: 10, creditUsed: 0 }
 ]
 
 describe('cashback tests', () => {
   it('deve somar os cashbacks das orders aprovadas', () => {
     const total = sumCashback(orders)
-    expect(total).toEqual(20)
+    expect(total).toEqual(10)
   })
 
   describe('uso do cashback', () => {
