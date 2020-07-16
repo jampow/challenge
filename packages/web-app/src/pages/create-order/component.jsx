@@ -137,19 +137,21 @@ export default () => {
                   </tbody>
                   <tfoot>
                     <tr className="text-right">
-                      <th colSpan="3">Subtotal:</th>
+                      <th rowSpan="4" />
+                      <th rowSpan="4" />
+                      <th>Subtotal:</th>
                       <th>{currency(subtotal)}</th>
                     </tr>
                     <tr className="text-right">
-                      <th colSpan="3">Cashback:</th>
+                      <th>Crédito:</th>
                       <th>{currency(cashback)}</th>
                     </tr>
                     <tr className="text-right">
-                      <th colSpan="3">Total:</th>
+                      <th>Total a pagar:</th>
                       <th>{currency(total)}</th>
                     </tr>
                     <tr className="text-right">
-                      <th colSpan="3">Cashback restante:</th>
+                      <th>Crédito restante:</th>
                       <th>{currency(remainingCashback)}</th>
                     </tr>
                   </tfoot>
@@ -159,8 +161,8 @@ export default () => {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Button onClick={handleSaveOrder}>Salvar</Button>
+          <Col className="text-right">
+            <Button onClick={handleSaveOrder}>Fazer pedido</Button>
           </Col>
         </Row>
       </Container>
