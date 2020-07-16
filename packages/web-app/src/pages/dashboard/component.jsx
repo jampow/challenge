@@ -11,11 +11,7 @@ import {
 } from 'react-bootstrap'
 import { getUserAndOrders } from '../../api/user'
 import { date, currency } from '../../common/helpers/formaters'
-import { STATUS } from '../../api/order'
-
-const sumCashback = orders => orders
-  .filter(order => order.status === STATUS.APPROVED)
-  .reduce((total, order) => total + order.total, 0)
+import { sumCashback } from '../../common/helpers/cashback'
 
 export default () => {
   const [ orders, setOrders ] = useState([])
@@ -93,7 +89,7 @@ export default () => {
 
       <Row className="mt-3">
         <Col className="text-right">
-          <Button as={Link} to="/create-order">
+          <Button as={Link} to={{ pathname: '/create-order', state: { cashback }}}>
             Novo pedido
           </Button>
         </Col>

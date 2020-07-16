@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Alert,
   Button,
@@ -8,14 +8,21 @@ import {
   Row,
   Table
 } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import EditModal from './EditItem'
 import { currency } from '../../common/helpers/formaters'
 import { createOrder } from '../../api/order'
+import { applyCashback } from '../../common/helpers/cashback'
 
 export default () => {
   const history = useHistory()
+  const location = useLocation()
+
+  const [ cashback, setCashback ] = useState(0)
+  const [ remainingCashback, setRemainingCashback ] = useState(0)
+  const [ subtotal, setSubtotal ] = useState(0)
+  const [ total, setTotal ] = useState(0)
   const [ cartItems, setCartItems ] = useState([])
   const [ editingItem, setEditingItem ] = useState({})
   const [ error, setError ] = useState('')
@@ -33,7 +40,18 @@ export default () => {
     setCartItems(newCart)
   }
 
-  const cartTotal = () => cartItems.reduce((acc, item) => acc + item.total, 0)
+  useEffect(() => {
+    setCashback(location.state && location.state.cashback)
+  }, [location.state])
+
+  useEffect(() => {
+    const subtot = cartItems.reduce((acc, item) => acc + item.total, 0)
+    setSubtotal(subtot)
+    const cashbUsed = applyCashback(subtot, cashback)
+    setTotal(cashbUsed.total)
+    setRemainingCashback(cashbUsed.cashback)
+
+  }, [cartItems, cashback])
 
   const handleItemEdition = (editedItem) => {
     setCartItems(
@@ -65,7 +83,8 @@ export default () => {
 
   const handleSaveOrder = async () => {
     const order = {
-      total: cartTotal(),
+      total,
+      cashback,
       items: cartItems
     }
 
@@ -93,35 +112,49 @@ export default () => {
                 <Form.Label>Busque o produto</Form.Label>
                 <SearchBar onChange={handleSelectItem} />
               </Form.Group>
-              <Table responsive>
-                <thead className="text-center">
-                  <tr>
-                    <th rowSpan="2">Item</th>
-                    <th rowSpan="2">Qtd</th>
-                    <th colSpan="2">Preço</th>
-                  </tr>
-                  <tr>
-                    <th>Unitário</th>
-                    <th>Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartItems.map(item => (
-                    <tr key={item.id} onClick={handleItemClick(item)}>
-                      <td>{item.name}</td>
-                      <td>{item.quantity}</td>
-                      <td className="text-right">{currency(item.price)}</td>
-                      <td className="text-right">{currency(item.total)}</td>
+              { cartItems.length > 0 && (
+                <Table responsive>
+                  <thead className="text-center">
+                    <tr>
+                      <th rowSpan="2">Item</th>
+                      <th rowSpan="2">Qtd</th>
+                      <th colSpan="2">Preço</th>
                     </tr>
-                  ))}
-                </tbody>
-                <tfoot>
-                  <tr className="text-right">
-                    <th colSpan="3">Total:</th>
-                    <th>{currency(cartTotal())}</th>
-                  </tr>
-                </tfoot>
-              </Table>
+                    <tr>
+                      <th>Unitário</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartItems.map(item => (
+                      <tr key={item.id} onClick={handleItemClick(item)}>
+                        <td>{item.name}</td>
+                        <td>{item.quantity}</td>
+                        <td className="text-right">{currency(item.price)}</td>
+                        <td className="text-right">{currency(item.total)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr className="text-right">
+                      <th colSpan="3">Subtotal:</th>
+                      <th>{currency(subtotal)}</th>
+                    </tr>
+                    <tr className="text-right">
+                      <th colSpan="3">Cashback:</th>
+                      <th>{currency(cashback)}</th>
+                    </tr>
+                    <tr className="text-right">
+                      <th colSpan="3">Total:</th>
+                      <th>{currency(total)}</th>
+                    </tr>
+                    <tr className="text-right">
+                      <th colSpan="3">Cashback restante:</th>
+                      <th>{currency(remainingCashback)}</th>
+                    </tr>
+                  </tfoot>
+                </Table>
+              )}
             </Form>
           </Col>
         </Row>

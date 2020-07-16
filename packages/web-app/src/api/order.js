@@ -3,6 +3,7 @@ import axios from './_config'
 import { getAuth } from './common'
 import { simplifyErrorObj } from './common'
 import { calculateCashback } from './cashback'
+import { applyCashback } from '../common/helpers/cashback'
 
 const PRIVATE = true
 
@@ -40,12 +41,16 @@ export const getOrders = async () => {
 export const createOrder = async (_order) => {
   const userId = getAuth().sub
 
-  const cb = await calculateCashback(_order.total)
+  const cbUsage = applyCashback(_order.total, _order.cashback)
+
+  const cb = await calculateCashback(cbUsage.total)
 
   const order = {
     ..._order,
     // OBS: Não colocaria esses dados, o ideal seria colocar no backend
     userId,
+    subtotal: _order.total,
+    total: cbUsage.total,
     cashbackValue: cb.value,
     cashbackPerc: cb.perc,
     status: STATUS.WAITING
