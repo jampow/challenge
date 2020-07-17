@@ -25,15 +25,23 @@ const Login = props => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setErrors(null)
+    setGenericError(false)
 
-    const resp = await doLogin({
-      email, password
-    })
+    let resp = {}
 
-    setErrors(resp.errors || null)
-    if(errors) return
+    try {
+      resp = await doLogin({
+        email, password
+      })
+    } catch(e) {
+      console.error(e)
+    }
 
-    if (resp.status !== 200) {
+    setErrors(resp && resp.error || null)
+    if(resp && resp.error) return
+
+    if (resp && resp.status !== 200) {
       setGenericError(true)
       return
     }
