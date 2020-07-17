@@ -31,4 +31,16 @@ describe('login page', () => {
     expect(container.innerHTML).toMatch(passwordError)
   })
 
+  it('deve exibir mensagens de erro genérica quando o usuário e senha estiverem errados', async () => {
+    const errorMessage = 'E-mail ou senha inválidos'
+    const { container, getByText, getByPlaceholderText } = render(<Signin />, { wrapper: MemoryRouter })
+
+    fireEvent.change(getByPlaceholderText('E-mail'), { target: { value: 'test@test.com' } })
+    fireEvent.change(getByPlaceholderText('Password'), { target: { value: '123' } })
+    fireEvent.click(getByText('Entrar'))
+
+    await waitForDomChange(() => screen.getByText(errorMessage))
+
+    expect(container.innerHTML).toMatch(errorMessage)
+  })
 })
