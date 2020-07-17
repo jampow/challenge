@@ -69,7 +69,7 @@ yarn e2e
 Infelizmente não consegui fazer tudo o que gostaria, mas acredito que cumpri com
 os objetivos do projeto, conforme abaixo:
 
-*Em itálico alguns comentários*
+> *Em itálico alguns comentários*
 
 ### Requisitos
 
@@ -82,10 +82,11 @@ os objetivos do projeto, conforme abaixo:
   - E-mail
   - Senha
 - [X] Tela de cadastro de compras onde deverá ser informado o código, valor e
-data. *Coloquei um campo de busca com autocomplete que pode ser usado tanto por
-código quanto pelo nome para fazer a busca do produto. Acabei não gostando da
-tabela que coloquei para listar os itens, subtotal e total porque é difícil
-deixar esse negócio bom num celular, mas não consegui achar uma outra solução.*
+data. 
+> *Coloquei um campo de busca com autocomplete que pode ser usado tanto por
+> código quanto pelo nome para fazer a busca do produto. Acabei não gostando da
+> tabela que coloquei para listar os itens, subtotal e total porque é difícil
+> deixar esse negócio bom num celular, mas não consegui achar uma outra solução.*
 - [X] Tela de listagem das compras cadastradas exibindo as informações de:
   - Código da compra
   - Valor
@@ -115,10 +116,11 @@ deixar esse negócio bom num celular, mas não consegui achar uma outra soluçã
 ### Requisitos Técnicos opicionais
 
 - [X] Testes automatizados (E2E)
-- [X] Utilização de boas práticas de git. *No projeto do github usei as issues
-para anotar e não esquecer alguns detalhes. Vinculei os commits com as issues,
-pois acredito ser uma boa prática de git, assim como commits pequenos. Achei
-melhor comentar, só para não passar desapercebido. eheheh*
+- [X] Utilização de boas práticas de git.
+> *No projeto do github usei as issues
+> para anotar e não esquecer alguns detalhes. Vinculei os commits com as issues,
+> pois acredito ser uma boa prática de git, assim como commits pequenos. Achei
+> melhor comentar, só para não passar desapercebido. eheheh*
 - [ ] State management:
   - Redux,
   - NGRX,
