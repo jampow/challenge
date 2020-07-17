@@ -13,4 +13,15 @@ describe('api/signin', () => {
       })
     }))
   })
+
+  it('deve armazenar o token quando o login não falhar', async () => {
+    const resp = await doLogin({
+      email: 'test@test.com',
+      password: 'test123'
+    })
+
+    expect(resp.data).toEqual(expect.objectContaining({
+      accessToken: expect.any(String)
+    }))
+  })
 })
