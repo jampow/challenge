@@ -33,6 +33,31 @@ Existe um usuário de teste com um pedido já cadastrado, que pode ser usado.
 
 Fique a vontade para criar seu próprio usuário. :-)
 
+## Tests
+
+### Unitários
+
+Tive alguns imprevistos e acabei não coneguindo fazer os testes de toda a
+aplicação, porém fiz os unitários de toda a parte de login da aplicação.
+
+- [Teste do compoenente react](https://github.com/jampow/boticario-challenge/blob/master/packages/web-app/src/pages/signin/component.test.js)
+- [Teste da comunicação com a API](https://github.com/jampow/boticario-challenge/blob/master/packages/web-app/src/api/signin.test.js)
+- [Teste da função que aplica o cashback](https://github.com/jampow/boticario-challenge/blob/master/packages/web-app/src/common/helpers/cashback.test.js)
+
+Para executar os testes unitários rode o comando
+
+```
+yarn test
+```
+
+### E2E
+
+Para executar os testes end-to-end rode o comando
+
+```
+yarn e2e
+```
+
 ## Minhas considerações
 
 Infelizmente não consegui fazer tudo o que gostaria, mas acredito que cumpri com
