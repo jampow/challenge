@@ -38,7 +38,7 @@ const Login = props => {
       console.error(e)
     }
 
-    setErrors(resp && resp.error || null)
+    setErrors((resp && resp.error) || null)
     if(resp && resp.error) return
 
     if (resp && resp.status !== 200) {
