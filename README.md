@@ -127,6 +127,9 @@ data.
   - MobX
 - [ ] Webcomponents cross-platform
 - [ ] Offline cache com service worker
+> *Conseguiria habilitar o cache com apenas uma linha no código, mas não quis 
+> habilitar apenas por habilitar, queria colocar uma mensagem de feedback e
+> algumas outras funcionalidades para o offline, mas fiquei sem tempo.* :-(
 - [X] Autenticação com JWT
 
 ## Dependências
