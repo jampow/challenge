@@ -78,8 +78,8 @@ os objetivos do projeto, conforme abaixo:
 - [X] Tela de cadastro de compras onde deverá ser informado o código, valor e
 data. *Coloquei um campo de busca com autocomplete que pode ser usado tanto por
 código quanto pelo nome para fazer a busca do produto. Acabei não gostando da
-tabela que coloquei para listar os itens, subtotal e total porque é difícil de
-fica bom no celular, mas não consegui achar uma outra solução que me agradasse.*
+tabela que coloquei para listar os itens, subtotal e total porque é difícil
+deixar esse negócio bom num celular, mas não consegui achar uma outra solução.*
 - [X] Tela de listagem das compras cadastradas exibindo as informações de:
   - Código da compra
   - Valor
