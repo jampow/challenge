@@ -52,9 +52,9 @@ const Login = props => {
   const GenericError = ({ show }) => {
     if (!show) return ''
     return (
-      <Row>
-        <Col>
-          <Alert type="Danger">
+      <Row className="justify-content-md-center">
+        <Col xs lg="4">
+          <Alert variant="danger">
             Não foi possível entrar. E-mail ou senha inválidos.
           </Alert>
         </Col>
