@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "e2e": "cd packages/e2e-tests; yarn start",
+    "test": "cd packages/web-app; yarn test --coverage",
     "postinstall": "lerna bootstrap",
     "start:front": "cd packages/web-app; yarn start",
     "start:back": "cd packages/back-end; yarn start"
