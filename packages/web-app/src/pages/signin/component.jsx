@@ -73,7 +73,7 @@ const Login = props => {
               <Form.Control
                 name="email"
                 type="email"
-                placeholder="email"
+                placeholder="E-mail"
                 onChange={handleEmailChange}
                 isInvalid={errors && errors.email}
               />
