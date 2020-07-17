@@ -44,7 +44,12 @@ aplicação, porém fiz os unitários de toda a parte de login da aplicação.
 - [Teste da comunicação com a API](https://github.com/jampow/boticario-challenge/blob/master/packages/web-app/src/api/signin.test.js)
 - [Teste da função que aplica o cashback](https://github.com/jampow/boticario-challenge/blob/master/packages/web-app/src/common/helpers/cashback.test.js)
 
-Para executar os testes unitários rode o comando
+Para executar os testes unitários é preciso estar com o mock do back-end de pé.
+Decidi não mockar as requisições com o jest por ter um banco de dados de mock
+no projeto. Tenho um pouco da [opinião do Kent C. Dodds sobre os mocks de
+requisições](https://kentcdodds.com/blog/stop-mocking-fetch).
+
+Após o servidoe de back-end estar de pé, rode o comando
 
 ```
 yarn test
@@ -52,7 +57,8 @@ yarn test
 
 ### E2E
 
-Para executar os testes end-to-end rode o comando
+Para executar os testes end-to-end, o servidores de back e front precisam estar
+rodando, depois execute o comando
 
 ```
 yarn e2e
