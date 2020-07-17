@@ -63,6 +63,8 @@ yarn e2e
 Infelizmente não consegui fazer tudo o que gostaria, mas acredito que cumpri com
 os objetivos do projeto, conforme abaixo:
 
+*Em itálico alguns comentários*
+
 ### Requisitos
 
 - [X] Tela de cadastro de um novo revendedor(a) solicitando os campos:
@@ -73,7 +75,11 @@ os objetivos do projeto, conforme abaixo:
 - [X] Tela de login com os campos:
   - E-mail
   - Senha
-- [X] Tela de cadastro de compras onde deverá ser informado o código, valor e data
+- [X] Tela de cadastro de compras onde deverá ser informado o código, valor e
+data. *Coloquei um campo de busca com autocomplete que pode ser usado tanto por
+código quanto pelo nome para fazer a busca do produto. Acabei não gostando da
+tabela que coloquei para listar os itens, subtotal e total porque é difícil de
+fica bom no celular, mas não consegui achar uma outra solução que me agradasse.*
 - [X] Tela de listagem das compras cadastradas exibindo as informações de:
   - Código da compra
   - Valor
@@ -103,7 +109,10 @@ os objetivos do projeto, conforme abaixo:
 ### Requisitos Técnicos opicionais
 
 - [X] Testes automatizados (E2E)
-- [X] Utilização de boas práticas de git
+- [X] Utilização de boas práticas de git. *No projeto do github usei as issues
+para anotar e não esquecer alguns detalhes. Vinculei os commits com as issues,
+pois acredito ser uma boa prática de git, assim como commits pequenos. Achei
+melhor comentar, só para não passar desapercebido. eheheh*
 - [ ] State management:
   - Redux,
   - NGRX,
