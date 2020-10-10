@@ -16,6 +16,5 @@ module.exports = {
       .selectItem(2)
       .pause(100)
       .click('@saveOrderBtn')
-      .pause(600000)
   }
 }
