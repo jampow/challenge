@@ -1,4 +1,4 @@
-# Desafio front end - Grupo Boticário
+# Desafio front end - Grupo Boticário ([English version](https://github.com/jampow/boticario-challenge/blob/master/README-EN.md))
 
 Projeto desafio para vaga de front-end no Grupo Boticário.
 
